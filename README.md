@@ -14,7 +14,9 @@ As an example, the admin of an application creates a new role for an application
 
 This framework provides a mechanism for authorizing resources based on permissions.
 
-## Using this Framework
+## Using this Framework 
+
+Get from [nuget](https://www.nuget.org/packages/AspNetMvc.Authorization.PermissionBased/)
 
 For checking permission within Razor view, or inside Action method of a controller, this framework provides three extension methods for IPrincipal interface.
 

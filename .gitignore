@@ -3,3 +3,5 @@ AspNetMvc.Authorization.PermissionBased/bin/
 AspNetMvc.Authorization.PermissionBased/obj/Debug/AspNetMvc.Authorization.PermissionBased.csproj.FileListAbsolute.txt
 AspNetMvc.Authorization.PermissionBased/obj/
 packages/
+nuget.exe
+AspNetMvc.Authorization.PermissionBased.1.0.0.nupkg
