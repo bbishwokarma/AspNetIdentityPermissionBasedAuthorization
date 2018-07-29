@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace AspNetMvc.Authorization.PermissionBased
 {
@@ -22,17 +23,29 @@ namespace AspNetMvc.Authorization.PermissionBased
 
         public ICollection<string> Get(TUserId userId)
         {
+            if(userId == null)
+            {
+                throw new ArgumentException("User ID must not be null.");
+            }
             return permissionsCache[userId];
         }
 
         public void Set(TUserId userId, ICollection<string> permissions)
         {
+            if (userId == null)
+            {
+                throw new ArgumentException("User ID must not be null.");
+            }
             Remove(userId);
             permissionsCache.Add(userId, permissions);
         }
 
         public void Remove(TUserId userId)
         {
+            if (userId == null)
+            {
+                throw new ArgumentException("User ID must not be null.");
+            }
             if (Has(userId))
             {
                 permissionsCache.Remove(userId);
@@ -41,12 +54,12 @@ namespace AspNetMvc.Authorization.PermissionBased
 
         public bool Has(TUserId userId)
         {
+            if (userId == null)
+            {
+                throw new ArgumentException("User ID must not be null.");
+            }
             return permissionsCache.ContainsKey(userId);
         }
-
-        public void Clear()
-        {
-            permissionsCache.Clear();
-        }
+        
     }
 }

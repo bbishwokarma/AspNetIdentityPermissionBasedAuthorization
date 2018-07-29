@@ -1,5 +1,4 @@
 ﻿using AspNetMvc.Authorization.PermissionBased;
-using Microsoft.AspNet.Identity;
 using System.Security.Principal;
 using System.Linq;
 using System.Collections.Generic;
@@ -17,14 +16,22 @@ public static class PrincipalExtensions
         {
             return false;
         }
-        var userId = principal.Identity.GetUserId();
+        var userId = principal.Identity.Name;
+        if (string.IsNullOrWhiteSpace(userId))
+        {
+            return false;
+        }
         return PermissionAuthorizationService.HasPermissionIn(userId, permissions.ToList(), resourceType, resourceId);
     }
     
 
     public static List<string> GetPermissions(this IPrincipal principal)
     {
-        var userId = principal.Identity.GetUserId();
+        var userId = principal.Identity.Name;
+        if (string.IsNullOrWhiteSpace(userId))
+        {
+            return new List<string>();
+        }
         return PermissionAuthorizationService.GetPermissions(userId);
     }
 
@@ -33,7 +40,7 @@ public static class PrincipalExtensions
     /// </summary>
     public static void PermissionServiceLogout(this IPrincipal principal)
     {
-        var userId = principal.Identity.GetUserId();
+        var userId = principal.Identity.Name;
         PermissionAuthorizationService.Logout(userId);
     }
 }

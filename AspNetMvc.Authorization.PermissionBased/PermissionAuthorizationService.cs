@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.Linq;
 using AspNetMvc.Authorization.PermissionBased.Rules;
 
@@ -39,6 +38,10 @@ namespace AspNetMvc.Authorization.PermissionBased
         {
             if (!initialized)
                 throw new Exception("Authorization Service has not been initialized");
+            if (string.IsNullOrWhiteSpace(userId))
+            {
+                throw new ArgumentException("User ID must not be blank or null.");
+            }
             var matchedPermissions = provider.GetPermissions(userId).Where(p => permissions.Contains(p)).ToList();
             foreach (var rule in specialRules)
             {
