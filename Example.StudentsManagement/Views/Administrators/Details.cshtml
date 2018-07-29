@@ -1,0 +1,36 @@
+﻿@model Example.StudentsManagement.Models.Administrator
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Administrator</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @if (User.HasPermissionIn(new string[] { AppPermissions.MANAGE_ADMINISTRATOR_PROFILE }))
+    {
+        <span>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        </span>
+    }
+    @if (User.HasPermissionIn(new string[] { AppPermissions.MANAGE_ADMINISTRATOR_PROFILE, AppPermissions.VIEW_ADMINISTRATOR_PROFILES }))
+    {
+        <span>
+            @Html.ActionLink("Back to List", "Index")
+        </span>
+    }
+</p>

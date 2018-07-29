@@ -1,0 +1,45 @@
+﻿@using Example.StudentsManagement.Models
+
+@model ApplicationUser
+@{
+    ViewBag.Title = "Log in";
+}
+<div class="container-signin">
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">
+            <b>@ViewBag.Title</b>
+        </div>
+        <div class="panel-body">
+            <section id="loginForm">
+                @{ 
+                    var msg =  Request.QueryString["msg"];
+                    if (!string.IsNullOrEmpty(msg))
+                    {
+                        <div class="alert-danger">
+                            The request can not be authorized. 
+                        </div>
+                    }
+                }
+                @using (Html.BeginForm("Index", null, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Username, new { @class = "col-md-4 control-label" })
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-8">
+                            <input type="submit" value="Sign in" />
+                        </div>
+                    </div>
+
+                }
+            </section>
+        </div>
+    </div>
+
+</div>
+

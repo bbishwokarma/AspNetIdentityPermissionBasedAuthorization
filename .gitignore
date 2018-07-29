@@ -5,3 +5,10 @@ AspNetMvc.Authorization.PermissionBased/obj/
 packages/
 nuget.exe
 AspNetMvc.Authorization.PermissionBased.1.0.0.nupkg
+AspNetMvc.Authorization.PermissionBased.1.0.0.1.nupkg
+.vs/
+Example.StudentsManagement/ApplicationInsights.config
+Example.StudentsManagement/Example.StudentsManagement.csproj.user
+Example.StudentsManagement/bin/
+Example.StudentsManagement/obj/Debug/CoreCompileInputs.cache
+Example.StudentsManagement/obj/

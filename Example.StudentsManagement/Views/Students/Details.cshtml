@@ -1,0 +1,61 @@
+﻿@model Example.StudentsManagement.Models.Student
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Student</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EnrollmentDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnrollmentDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfBirth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @if (User.HasPermission(AppPermissions.MANAGE_STUDENT_PROFILE))
+    {
+        <span>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        </span>
+    }
+    <span></span>
+    @if (User.HasPermissionIn(new string[] { AppPermissions.MANAGE_STUDENT_PROFILE, AppPermissions.VIEW_STUDENT_PROFILES }))
+    {
+        <span>
+            @Html.ActionLink("Back to List", "Index")
+        </span>
+    }
+</p>
